@@ -3,6 +3,9 @@
   height: 100vh;
 }
 
+.timeSelection {
+}
+
 .timerContainer {
   position: relative;
   top: 0;
@@ -26,4 +29,8 @@
   transform: translate(-50%, -50%);
   height: 350px;
   border: 1px green solid;
+}
+
+.timeRemaining {
+  color: white;
 }

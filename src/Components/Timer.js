@@ -1,21 +1,50 @@
 import { useEffect, useState } from 'react';
 import avacado from "../Assets/avacado.svg";
 import spoon from "../Assets/spoon.svg";
+import { millisecondsToMinutes } from '../utils';
 import "../App.css";
 
-function Timer({totalTime}) {
-  console.log('hello')
+function Timer({totalTime, startTimer, clear}) {
   const [timeRemaining, updateTimeRemaining] = useState(totalTime)
-  console.log(timeRemaining);
+  const [timer, setTimer] = useState();
+
+  const start = () => {
+    const timer = setInterval(() => {
+        updateTimeRemaining(timeRemaining => timeRemaining - 1000);
+        if (timeRemaining === 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+    setTimer(timer);
+  }
+
+  useEffect(() => { 
+    if (startTimer){ 
+        start(); 
+    } 
+    else {
+        clearInterval(timer);
+    }
+  }, [startTimer]);
 
   useEffect(() => {
-    const interval = setInterval(updateTimeRemaining(() => timeRemaining - 1000), 10000);
-    return () => clearInterval(interval);
-  }, [])
+    if (timeRemaining === 0) {
+        clearInterval(timer);
+    }
+  }, [timeRemaining, timer]);
+
+  useEffect(() => {
+    clearInterval(timer);
+    updateTimeRemaining(totalTime);
+  }, [totalTime])
+
+  useEffect(() => {
+    return () => clearInterval(timer);
+  }, [timer]);
 
   return (
     <div className="timerContainer">
-        <p>Time remaining: {timeRemaining}</p>
+        <p className='timeRemaining'>Time remaining: {millisecondsToMinutes(timeRemaining)}</p>
         {timeRemaining <= 0 && <p>Times up!</p>}
         <img src={avacado} className="timer" alt="Avacado Timer" />
         <img src={spoon} className="minuteHand" alt="Spoon Minute Hand" />
@@ -24,15 +53,3 @@ function Timer({totalTime}) {
 }
 
 export default Timer;
-
-/*
-User selects a count down time: 5 minutes (300000ms)
-Minute hand position is set
-While totalTime > 0:
-    Timer starts counting down by second: totalTime - 1000
-    Minute hand position is updated
-    Time remaining is updated
-When totalTime <= 0:
-    Display finished notification
-
-*/
