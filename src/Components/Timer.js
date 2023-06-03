@@ -45,19 +45,24 @@ function Timer({totalTime, startTimer, clear}) {
 
   return (
     <div className="timerContainer">
-      <p className="timeRemaining">
-        Time remaining: {millisecondsToMinutes(timeRemaining)}
-      </p>
+      <div className="timeRemainingContainer">
+        <p className="timeRemaining">
+          Time remaining: {millisecondsToMinutes(timeRemaining)}
+        </p>
+      </div>
+
       {timeRemaining <= 0 && <p>Times up!</p>}
-      <div className="timer" alt="Avacado Timer">
-        <img
-          style={{
-            transform: "rotate(" + minute + "deg)",
-          }}
-          src={spoon}
-          className="minuteHand"
-          alt="Spoon Minute Hand"
-        />
+      <div className="timer">
+        <div className="minuteContainer">
+          <img
+            style={{
+              transform: "rotate(" + minute + "deg)",
+            }}
+            className="minuteHand"
+            alt="Spoon Minute Hand"
+            src={spoon}
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,33 @@
 .App {
-  background-color: black;
   height: 100vh;
+}
+
+.title {
+  color: #257C37;
+  text-align: center;
+}
+
+.timeButton, .active, .timeRemainingContainer {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  text-align: center;
+}
+
+.timeButton:hover, .active:hover {
+  cursor: pointer;
+  background-color: #257C37;
+  color: white;
+}
+
+.timeButton {
+  color: #257C37;
+}
+
+.active {
+  background-color: #257C37;
+  color: white;
 }
 
 .timeSelection {
@@ -18,7 +45,6 @@
 }
 
 .timerContainer {
-  border: 1px solid blue;
   height: 100%;
   display: flex;
   align-items: center;
@@ -30,14 +56,14 @@
 .timer {
   height: 100%;
   width: 100%;
-  margin: auto;
-  border: 1px red solid;
   background-image: url('Assets/avacado.svg');
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
+  top: 0;
 }
 
-.minuteHandContainer {
+.minuteContainer {
   position: absolute;
   top: 0;
   right: 0;
@@ -46,14 +72,22 @@
 }
 
 .minuteHand {
-  height: 50%;
-  left: 23%;
+  height: 400px;
+  width: 75px;
+  left:45%;
+  top: 10%;
   position: absolute;
-  top: 18%;
   transform-origin: 50% 100%;
-  height: 350px;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.timeRemainingContainer {
+  background-color: white;
+  box-shadow: 0px 0px 6px 2px #8d8344;
+
 }
 
 .timeRemaining {
-  color: white;
+  color: #257C37;
 }
