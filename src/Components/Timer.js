@@ -7,6 +7,7 @@ import "../App.css";
 function Timer({totalTime, startTimer, clear}) {
   const [timeRemaining, updateTimeRemaining] = useState(totalTime)
   const [timer, setTimer] = useState();
+  const minute = Math.floor(timeRemaining / 60000) * 6;
 
   const start = () => {
     const timer = setInterval(() => {
@@ -44,10 +45,20 @@ function Timer({totalTime, startTimer, clear}) {
 
   return (
     <div className="timerContainer">
-        <p className='timeRemaining'>Time remaining: {millisecondsToMinutes(timeRemaining)}</p>
-        {timeRemaining <= 0 && <p>Times up!</p>}
-        <img src={avacado} className="timer" alt="Avacado Timer" />
-        <img src={spoon} className="minuteHand" alt="Spoon Minute Hand" />
+      <p className="timeRemaining">
+        Time remaining: {millisecondsToMinutes(timeRemaining)}
+      </p>
+      {timeRemaining <= 0 && <p>Times up!</p>}
+      <div className="timer" alt="Avacado Timer">
+        <img
+          style={{
+            transform: "rotate(" + minute + "deg)",
+          }}
+          src={spoon}
+          className="minuteHand"
+          alt="Spoon Minute Hand"
+        />
+      </div>
     </div>
   );
 }
