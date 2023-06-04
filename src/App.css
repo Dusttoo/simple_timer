@@ -2,9 +2,20 @@
   height: 100vh;
 }
 
+.header {
+  background-color: white;
+  height: 75px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .title {
   color: #257C37;
   text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 .timeButton, .active, .timeRemainingContainer {
@@ -30,14 +41,7 @@
   color: white;
 }
 
-.timeSelection {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-}
-
-.timerControls {
+.timeSelection, .timerControls,  .timerTypeContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,35 +60,21 @@
 .timer {
   height: 100%;
   width: 100%;
-  background-image: url('Assets/avacado.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  top: 0;
-}
-
-.minuteContainer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  border: 1px solid red;
 }
 
 .minuteHand {
-  height: 400px;
-  width: 75px;
-  left:45%;
-  top: 10%;
-  position: absolute;
-  transform-origin: 50% 100%;
-  object-fit: cover;
-  object-position: bottom;
+  height: 300px;
+  border: 1px solid blue;
 }
 
 .timeRemainingContainer {
   background-color: white;
-  box-shadow: 0px 0px 6px 2px #8d8344;
+  box-shadow: 0px 0px 5px 1px #8d8344;
+  border: 1px solid #8d8344;
 
 }
 
