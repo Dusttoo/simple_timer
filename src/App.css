@@ -46,38 +46,51 @@
   align-items: center;
   justify-content: center;
   padding: 5px;
-}
-
-.timerContainer {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 10px;
+  flex-wrap: wrap;
 }
 
 .timer {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  border: 1px solid red;
+    position: relative;
+    margin: auto;
+    height: 40vw;
+    /*to make the height and width responsive*/
+    width: 40vw;
+    background: url('./Assets/numbers.svg') no-repeat;
+    /*setting our background image*/
+    background-size: 100%;
 }
 
 .minuteHand {
-  height: 300px;
-  border: 1px solid blue;
+  position: absolute;
+  transform-origin: center;
+  width: 50%;
+  height: 45%;
+  top: 24%;
+  left: 28%;
+  opacity: 0.8;
+  transform-origin: 47% 61%;
 }
 
 .timeRemainingContainer {
-  background-color: white;
-  box-shadow: 0px 0px 5px 1px #8d8344;
-  border: 1px solid #8d8344;
-
+  width: 50%;
 }
 
 .timeRemaining {
   color: #257C37;
+}
+
+.avacado {
+  box-sizing: content-box;
+  border: 1px solid red;
+  height: 500px;
+  width: 500px;
+  position: relative;
+  background-image: url('./Assets/avacado.svg');
+}
+
+.progressBar {
+    display: block;
+    background-color: #d2c155;;
+    position: relative;
+    overflow: hidden;
 }

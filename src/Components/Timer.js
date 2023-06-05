@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import avacado from "../Assets/avacado.svg";
-import spoon from "../Assets/spoon.svg";
-import { millisecondsToMinutes } from '../utils';
+import TimeRemaining from './TimeRemaining';
+import Avacado from "./Avacado";
 import "../App.css";
-import Avacado from './Avacado';
+import Avacado2 from './Avacado2';
 
 function Timer({totalTime, startTimer, clear, setActionActive, setStart, breakTime, setBreakTime}) {
   const [timeRemaining, updateTimeRemaining] = useState(totalTime)
@@ -72,19 +71,17 @@ function Timer({totalTime, startTimer, clear, setActionActive, setStart, breakTi
   }, [clear])
 
   return (
-    <div className="timerContainer">
-      <div className="timeRemainingContainer">
-        <p className="timeRemaining">
-          {!timerDone ? `Time remaining: ${millisecondsToMinutes(timeRemaining)}`
-          : `Times Up! Start your break`}
-        </p>
+    <>
+      {/* <div className="timer">
+        <Avacado minute={minute} />
+      </div> */}
+      <div className='avacado'>
+        <span className='progressBar' style={{height: "100%"}}></span>
       </div>
-      <div className="timer">
-        {/* <div className="minuteContainer"> */}
-          <Avacado minute={minute}/>
-        {/* </div> */}
-      </div>
-    </div>
+      {/* <Avacado2 /> */}
+
+      <TimeRemaining timerDone={timerDone} timeRemaining={timeRemaining} />
+    </>
   );
 }
 
