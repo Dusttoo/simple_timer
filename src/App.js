@@ -12,7 +12,7 @@ function App() {
   const [actionActive, setActionActive] = useState();
   const [breakTime, setBreakTime] = useState(false);
   const [breakActive, setBreakActive] = useState('Work')
-  const TIMEFRAMES = [.25, 15, 5, 25, 30];
+  const TIMEFRAMES = [15, 5, 25, 30];
 
   const updateTimeSelection = (minutes) => {
     const timeInMillisecconds = calculateMilliseconds(minutes);
