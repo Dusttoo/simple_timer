@@ -4,7 +4,7 @@ export const calculateMilliseconds = (minutes) => {
 
 export const millisecondsToMinutes = (milliseconds => {
     const minutes = Math.floor(milliseconds / 60000);
-    const seconds = Math.floor(60 * (milliseconds / 1000 / 60 - minutes ));
-
-    return `${minutes} minutes and ${seconds} seconds`
+    let seconds = Math.round(60 * (milliseconds / 60000 - minutes ));
+    if(seconds < 10) {seconds = `0${seconds}`}
+    return `${minutes}:${seconds}`
 });

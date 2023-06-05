@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import TimeRemaining from './TimeRemaining';
+import useSound from "use-sound";
 import "../App.css";
+
+const alarm = require('../Assets/alarm.mp3')
 
 function Timer({totalTime, startTimer, clear, setActionActive, setStart, breakTime, setBreakTime}) {
   const [timeRemaining, updateTimeRemaining] = useState(totalTime)
   const [timer, setTimer] = useState();
   const [timerDone, setTimerDone] = useState(false);
-
+  const [timerCompleteSound] = useSound(alarm);
   const resetTimer = () => {
       clearInterval(timer);
       setActionActive(null);
@@ -14,12 +17,12 @@ function Timer({totalTime, startTimer, clear, setActionActive, setStart, breakTi
       updateTimeRemaining(totalTime);
       setTimerDone(true);
   };
-
   const start = () => {
     const timer = setInterval(() => {
         updateTimeRemaining(timeRemaining => timeRemaining - 1000);
         if (timeRemaining === 0) {
             resetTimer();
+            timerCompleteSound();
         }
     }, 1000);
     setTimer(timer);
