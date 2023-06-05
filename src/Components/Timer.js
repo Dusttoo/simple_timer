@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import TimeRemaining from './TimeRemaining';
-import Avacado from "./Avacado";
 import "../App.css";
-import Avacado2 from './Avacado2';
 
 function Timer({totalTime, startTimer, clear, setActionActive, setStart, breakTime, setBreakTime}) {
   const [timeRemaining, updateTimeRemaining] = useState(totalTime)
   const [timer, setTimer] = useState();
   const [timerDone, setTimerDone] = useState(false);
-  const minute = Math.floor(timeRemaining / 60000) * 6;
 
   const resetTimer = () => {
       clearInterval(timer);
@@ -72,15 +69,20 @@ function Timer({totalTime, startTimer, clear, setActionActive, setStart, breakTi
 
   return (
     <>
-      {/* <div className="timer">
-        <Avacado minute={minute} />
-      </div> */}
-      <div className='avacado'>
-        <span className='progressBar' style={{height: "100%"}}></span>
-      </div>
-      {/* <Avacado2 /> */}
+      <div className="timer">
+        <TimeRemaining timerDone={timerDone} timeRemaining={timeRemaining} breakTime={breakTime}/>
 
-      <TimeRemaining timerDone={timerDone} timeRemaining={timeRemaining} />
+        <span
+          className="progressBar"
+          style={{
+            height: `${
+              !breakTime
+                ? 100 - (timeRemaining / totalTime) * 100
+                : (timeRemaining / totalTime) * 100
+            }%`,
+          }}
+        ></span>
+      </div>
     </>
   );
 }

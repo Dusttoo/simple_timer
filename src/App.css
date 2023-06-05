@@ -49,37 +49,24 @@
   flex-wrap: wrap;
 }
 
-.timer {
-    position: relative;
-    margin: auto;
-    height: 40vw;
-    /*to make the height and width responsive*/
-    width: 40vw;
-    background: url('./Assets/numbers.svg') no-repeat;
-    /*setting our background image*/
-    background-size: 100%;
-}
-
-.minuteHand {
-  position: absolute;
-  transform-origin: center;
-  width: 50%;
-  height: 45%;
-  top: 24%;
-  left: 28%;
-  opacity: 0.8;
-  transform-origin: 47% 61%;
-}
-
 .timeRemainingContainer {
   width: 50%;
+  position: absolute;
+  z-index: 10;
 }
 
 .timeRemaining {
   color: #257C37;
 }
 
-.avacado {
+.timerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid blue;
+}
+
+.timer {
   box-sizing: content-box;
   border: 1px solid red;
   height: 500px;

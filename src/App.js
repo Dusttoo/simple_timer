@@ -20,6 +20,7 @@ function App() {
     const timeInMillisecconds = calculateMilliseconds(minutes);
     setTotalTime(timeInMillisecconds);
     setTimeActive(minutes);
+    setClear(true)
     
   }
 
@@ -97,15 +98,17 @@ function App() {
           Reset
         </button>
       </div>
-      <Timer
-        totalTime={totalTime}
-        startTimer={start}
-        setActionActive={setActionActive}
-        setStart={setStart}
-        clear={clear}
-        breakTime={breakTime}
-        setBreakTime={setBreakTime}
-      />
+      <div className="timerContainer">
+        <Timer
+          totalTime={totalTime}
+          startTimer={start}
+          setActionActive={setActionActive}
+          setStart={setStart}
+          clear={clear}
+          breakTime={breakTime}
+          setBreakTime={setBreakTime}
+        />
+      </div>
     </div>
   );
 }
